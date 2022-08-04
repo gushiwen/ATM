@@ -1,10 +1,10 @@
-const ATMDeposit = ({ onChange, deposit, isDeposit, validTransaction }) => {
+const ATMDeposit = ({ onChange, isDeposit, validTransaction }) => {
   const choice = ['Deposit', 'Cash Back'];
   console.log(`ATM isDeposit: ${isDeposit}`);
   return (
     <label className="label huge">
       <h3> {choice[Number(!isDeposit)]}</h3>
-      <input id="number-input" type="number" width="200" onChange={onChange} value={deposit}></input>
+      <input id="number-input" type="number" width="200" onChange={onChange}></input>
       <input type="submit" disabled={!validTransaction} width="200" value="Submit" id="submit-input"></input>
     </label>
   );
@@ -21,6 +21,7 @@ const Account = () => {
   let status = `Account Balance $ ${totalState} `;
 
   console.log(`Account Rendered with isDeposit: ${isDeposit}`);
+
   const handleChange = (event) => {
     console.log(`handleChange ${event.target.value}`);
     console.log(Number(event.target.value), totalState);
@@ -70,7 +71,7 @@ const Account = () => {
         <option id="cashback-selection" value="Cash Back">Cash Back</option>
       </select>
       <hr />
-      {showInput && <ATMDeposit onChange={handleChange} deposit={deposit} isDeposit={isDeposit} validTransaction={validTransaction}></ATMDeposit>}
+      {showInput && <ATMDeposit onChange={handleChange} isDeposit={isDeposit} validTransaction={validTransaction}></ATMDeposit>}
     </form>
   );
 };
